@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment on constructor Object</title>
+</head>
+<body>
+    <h1>Hellow World!</h1>
+     
+    
+
+    <!-- <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p> -->
+
+    <!-- <p><button id="demo1" value="display" onclick= "Submit1();">Submit1</button></p>
+    <p><button id="demo2" onclick= "Submit2();">Submit2</button></p>
+    <p><button id="demo3" onclick= "Submit3();">Submit3</button></p>  -->
+
+    <p><input id="demo1" type="button" value="display firstObject Data" onclick="Submit1();"></p>
+    <p><input id="demo2" type="button" value="display secondObject Data" onclick="Submit2()"></p>
+    <p></p><input id="demo3" type="button" value="display thiredObject Data" onclick="Submit3()"></p>
+
+</body>
+
+<script type ="text/javascript">
+
+ 
+class HospitalForm{
+    constructor(name1, hospitalName, date, specilzn){
+        console.log("Constructor are called "+name1+" "+date);
+        this.name1 = name1;
+        this.hospitalName = hospitalName;
+        this.date = date;
+        this.specilzn = specilzn;
+    }
+
+    submit(){
+        alert(this.name1+ ': Your form is submitted' +' on date: '+this.date);
+    }
+    
+    preview(){
+        alert('The specialization of '+this.hospitalName+ ' are: '+this.specilzn);
+    }
+    
+}
+
+
+let rahulFrom = new HospitalForm("Rahul", "All_India", '26-11-22', 'dental_care');
+let rohanForm1 = new HospitalForm("Rohan", 'All_India', '25-10-22', 'Skin_Care');
+let rohanForm2 = new HospitalForm("Rohan", 'Appolo_Hospital','23-08-22', 'Skin_Care');
+
+
+console.log(rohanForm1);
+
+/*
+rahulFrom.submit();
+rahulFrom.preview();
+rohanForm1.submit();
+rohanForm1.preview();
+rohanForm2.submit();
+rohanForm2.preview();   */ 
+
+
+
+console.log('Getting/Grabing the concept of localStorage');
+localStorage.setItem('formDetails1', JSON.stringify(rahulFrom));
+let naam1 = localStorage.getItem('formDetails1');
+naam1 = JSON.parse(naam1);
+console.log(naam1);
+
+
+localStorage.setItem('formDetails2', JSON.stringify(rohanForm1));
+let naam2 = localStorage.getItem('formDetails2');
+naam2 = JSON.parse(naam2);
+console.log(naam2);
+
+
+localStorage.setItem('formDetails3', JSON.stringify(rohanForm2));
+let naam3 = localStorage.getItem('formDetails3');
+naam3 = JSON.parse(naam3);
+console.log(naam3);
+
+function Submit1(){
+   alert(document.getElementById('demo1').innerHTML = localStorage.getItem('formDetails1'));
+}
+function Submit2(){
+    alert(document.getElementById('demo2').innerHTML = localStorage.getItem('formDetails2'));
+}
+
+function Submit3(){
+    alert(document.getElementById('demo3').innerHTML = localStorage.getItem('formDetails3'));
+}
+
+
+
+   
+</script>
+</html>
